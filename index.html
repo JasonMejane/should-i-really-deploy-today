@@ -259,6 +259,8 @@
 			<button id="lang-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
 			<button id="lang-pt" class="lang-btn" onclick="setLanguage('pt')">PT</button>
 			<button id="lang-de" class="lang-btn" onclick="setLanguage('de')">DE</button>
+			<button id="lang-ja" class="lang-btn" onclick="setLanguage('ja')">JA</button>
+			<button id="lang-zh" class="lang-btn" onclick="setLanguage('zh')">ZH</button>
 		</div>
 
 		<div class="container">
@@ -430,6 +432,68 @@
 						"Zugriff verweigert. Der On-Call-Ingenieur hat sein Handy schon in ein Glas Wasser gelegt.",
 					],
 				},
+				ja: {
+					question: "本当に今日はデプロイしていいの？",
+					btnRefresh: "本気？マトリクスを再確認",
+					disclaimer:
+						"このサイトはユーモアを目的としています。アドバイスを文字通り受け取らないでください。運用環境が虐待や事故に遭っても、作者は一切の責任を負いません。",
+					friday: [
+						"もちろん！金曜の夕方は、チームのメンタルヘルスを試すに最適な時間です。",
+						"やっちゃえ。土曜の深夜2時に緊急ロールバックが起きるなんて、まさにロマンチックじゃない？",
+						"進め！もし壊れたら、それは『月曜の自分』の問題だ。",
+						"YOLO。サポートチームに週末の予定があるとは思えないし。",
+						"はい！金曜16:55に『Deploy』を押すときの高揚感は、買うことのできないドラッグだ。",
+						"本当に週末を緊急ロールバックで始めたいの？私も！:)",
+						"さあ、輝いて伝説的な勇気を見せよう！",
+						"いや、何が起きるって？金曜の夕方だし、みんなもう心の中では週末だよ。",
+					],
+					weekday: [
+						"危険が高すぎる。プロとして、みんながやるように金曜の夕方まで待とう。",
+						"チームの週末を台無しにするチャンスを逃すの？絶対に無理。",
+						"火曜日？危険を感じる感覚はどこにあるの？センスは？",
+						"開発者マニフェストでは、修正できる余裕があるときにデプロイするのは禁止されている。",
+						"いや。今日本番が落ちたら、平日勤務時間中に修復しなきゃいけない。つまらない。",
+						"どういうこと？NO?!",
+					],
+					weekend: [
+						"週末にデプロイする？金曜に入れたバグを直すべきじゃない？",
+						"週末だ。本番は静かに休ませてやろう。",
+						"サーバーだって眠っている。最適化されていないコードのせいで起こすな。",
+						"今 push すると、日曜を丸ごと Slack で過ごすことになる。人生の選択を考えろ。",
+						"アクセス拒否。オンコールのエンジニアはもう携帯をコップの水に沈めている。",
+					],
+				},
+				zh: {
+					question: "今天真的该部署吗？",
+					btnRefresh: "认真点？再检查一次矩阵",
+					disclaimer:
+						"这个站点是恶搞性质的，不要把建议当真。若你的生产环境被折腾出问题，作者概不负责。",
+					friday: [
+						"当然！周五下午正是测试团队精神状态的最佳时机。",
+						"就这样做吧。没什么比周六凌晨两点的紧急回滚更“浪漫”的了。",
+						"继续！如果炸了，那就交给“周一的你”去处理。",
+						"YOLO。反正客服团队也没什么周末计划。",
+						"是的！周五 16:55 按下『Deploy』的那种兴奋，买不来。",
+						"你真的想让周末从凌晨两点的紧急回滚开始吗？我也想！:)",
+						"来吧，是时候闪耀并展示你传奇般的勇气了！",
+						"我是说……能出什么问题？周五下午，大家心里早就已经在周末了。",
+					],
+					weekday: [
+						"风险太大。像大家一样专业一点，等到周五下午再说。",
+						"错过毁掉团队周末的机会？绝对不行。",
+						"周二？你的危险感在哪里？你的风格呢？",
+						"开发者宣言明确禁止在你还有时间修复代码时推送。",
+						"不行。如果今天生产环境出问题，你就得在正常办公时间修复。太无聊了。",
+						"那要不要：NO？！",
+					],
+					weekend: [
+						"周末部署？你不是应该正在修复周五那次部署留下的 bug 吗？",
+						"现在是周末，让生产环境安静地休息吧。",
+						"连服务器都在睡觉。别因为你那糟糕的代码库把它们叫醒。",
+						"如果你现在 push，整个周日都要在 Slack 上度过。想想你的人生选择。",
+						"访问被拒绝。值班工程师已经把手机扔进水杯里了。",
+					],
+				},
 			};
 
 			let currentLang = "en";
@@ -445,6 +509,10 @@
 					currentLang = "pt";
 				} else if (browserLang && browserLang.startsWith("de")) {
 					currentLang = "de";
+				} else if (browserLang && browserLang.startsWith("ja")) {
+					currentLang = "ja";
+				} else if (browserLang && browserLang.startsWith("zh")) {
+					currentLang = "zh";
 				} else {
 					currentLang = "en";
 				}
@@ -458,6 +526,8 @@
 				document.getElementById("lang-es").classList.toggle("active", lang === "es");
 				document.getElementById("lang-pt").classList.toggle("active", lang === "pt");
 				document.getElementById("lang-de").classList.toggle("active", lang === "de");
+				document.getElementById("lang-ja").classList.toggle("active", lang === "ja");
+				document.getElementById("lang-zh").classList.toggle("active", lang === "zh");
 				checkDeploymentPolicy();
 			}
 
@@ -499,6 +569,10 @@
 						answerElement.innerText = "SIM";
 					} else if (currentLang === "de") {
 						answerElement.innerText = "JA";
+					} else if (currentLang === "ja") {
+						answerElement.innerText = "はい";
+					} else if (currentLang === "zh") {
+						answerElement.innerText = "是";
 					} else {
 						answerElement.innerText = "YES";
 					}
@@ -513,6 +587,10 @@
 						answerElement.innerText = "NÃO";
 					} else if (currentLang === "de") {
 						answerElement.innerText = "NEIN";
+					} else if (currentLang === "ja") {
+						answerElement.innerText = "いいえ";
+					} else if (currentLang === "zh") {
+						answerElement.innerText = "否";
 					} else {
 						answerElement.innerText = "NO";
 					}
