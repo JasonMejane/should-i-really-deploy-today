@@ -27,12 +27,12 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				height: 100vh;
+				min-height: 100vh;
 				color: #ffffff;
 				text-align: center;
 				padding: 20px;
 				position: relative;
-				overflow: hidden;
+				overflow-x: hidden;
 				transition: background-color 0.5s ease;
 			}
 
@@ -68,6 +68,7 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+				margin: auto;
 			}
 
 			h3 {
@@ -224,8 +225,6 @@
 
 			/* Badge Fuseau Horaire */
 			.timezone-badge {
-				position: absolute;
-				bottom: 25px;
 				font-size: 0.8rem;
 				font-weight: 500;
 				letter-spacing: 2px;
@@ -234,7 +233,23 @@
 				border: 1px solid rgba(255, 255, 255, 0.05);
 				padding: 8px 16px;
 				border-radius: 4px;
+			}
+
+			.site-footer {
+				width: 100%;
+				max-width: 750px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 12px;
 				z-index: 2;
+			}
+
+			.disclaimer {
+				color: #8b9bb4;
+				font-family: Arial, sans-serif;
+				font-size: 0.75rem;
+				line-height: 1.5;
 			}
 		</style>
 	</head>
@@ -251,13 +266,18 @@
 			<button id="refresh-btn" class="refresh-btn">-</button>
 		</div>
 
-		<div id="timezone-badge" class="timezone-badge">ZONE // -</div>
+		<footer class="site-footer">
+			<div id="timezone-badge" class="timezone-badge">ZONE // -</div>
+			<p id="disclaimer" class="disclaimer"></p>
+		</footer>
 
 		<script>
 			const i18n = {
 				fr: {
 					question: "Dois-je vraiment déployer aujourd'hui ?",
-					btnRefresh: "Re-fetch Matrix",
+					btnRefresh: "Vraiment ? Re-vérifier la matrice",
+					disclaimer:
+						"Ce site est une œuvre humoristique : ne prenez pas ses conseils au pied de la lettre. Le créateur décline toute responsabilité si votre prod est maltraitée ou blessée.",
 					friday: [
 						"Vraiment ? C'est le meilleur moment pour tester la résilience de l'équipe d'astreinte.",
 						"Absolument. Rien de tel qu'un bon crash en prod pour pimenter le week-end.",
@@ -286,7 +306,9 @@
 				},
 				en: {
 					question: "Should I really deploy today?",
-					btnRefresh: "Re-fetch Matrix",
+					btnRefresh: "Really? Re-check the Matrix",
+					disclaimer:
+						"This site is intended as humor; don't take its advice literally. The creator accepts no responsibility if your production environment is mistreated or injured.",
 					friday: [
 						"Absolutely! Friday afternoon is the optimal window to stress-test your team's mental health.",
 						"Do it. Nothing says 'romantic weekend' like an emergency roll-back at 2 AM on a Saturday.",
@@ -340,9 +362,11 @@
 				const badgeElement = document.getElementById("timezone-badge");
 				const questionElement = document.getElementById("question-text");
 				const refreshBtnElement = document.getElementById("refresh-btn");
+				const disclaimerElement = document.getElementById("disclaimer");
 
 				questionElement.innerText = i18n[currentLang].question;
 				refreshBtnElement.innerText = i18n[currentLang].btnRefresh;
+				disclaimerElement.innerText = i18n[currentLang].disclaimer;
 
 				let userTimeZone = "UTC";
 				try {
