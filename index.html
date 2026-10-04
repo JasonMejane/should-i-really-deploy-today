@@ -4,7 +4,6 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Should I Really Deploy Today? (Synthwave Troll Edition)</title>
-		<!-- Importation d'une police futuriste et rétro-synthwave depuis Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap" rel="stylesheet" />
@@ -36,7 +35,7 @@
 				transition: background-color 0.5s ease;
 			}
 
-			/* Effet de grille rétro en arrière-plan */
+			/* Background retro grid */
 			body::before {
 				content: "";
 				position: absolute;
@@ -102,7 +101,7 @@
 				padding: 0 10px;
 			}
 
-			/* --- STYLE DU BOUTON REFRESH NÉON --- */
+			/* --- Refresh button --- */
 			.refresh-btn {
 				font-family: "Orbitron", sans-serif;
 				background: transparent;
@@ -123,7 +122,7 @@
 				transform: scale(0.95);
 			}
 
-			/* --- SÉLECTEUR DE LANGUE NÉON --- */
+			/* --- Language selector --- */
 			.lang-selector {
 				position: absolute;
 				top: 25px;
@@ -145,9 +144,9 @@
 				transition: all 0.3s ease;
 			}
 
-			/* --- CONFIGURATION DYNAMIQUE DES THÈMES NÉON --- */
+			/* --- Dynamic Theme Configuration --- */
 
-			/* Mode VENDREDI : Néon Violet */
+			/* Friday mode (purple) */
 			body.deploy-yes {
 				background-color: #120224;
 			}
@@ -185,7 +184,7 @@
 				box-shadow: 0 0 10px rgba(181, 126, 220, 0.3);
 			}
 
-			/* Mode AUTRES JOURS : Néon Orange */
+			/* Other days mode (orange) */
 			body.deploy-no {
 				background-color: #1a0f05;
 			}
@@ -223,7 +222,7 @@
 				box-shadow: 0 0 10px rgba(255, 170, 102, 0.3);
 			}
 
-			/* Badge Fuseau Horaire */
+			/* Timezone badge */
 			.timezone-badge {
 				font-size: 0.8rem;
 				font-weight: 500;
@@ -257,6 +256,9 @@
 		<div class="lang-selector">
 			<button id="lang-fr" class="lang-btn" onclick="setLanguage('fr')">FR</button>
 			<button id="lang-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
+			<button id="lang-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
+			<button id="lang-pt" class="lang-btn" onclick="setLanguage('pt')">PT</button>
+			<button id="lang-de" class="lang-btn" onclick="setLanguage('de')">DE</button>
 		</div>
 
 		<div class="container">
@@ -330,9 +332,102 @@
 					weekend: [
 						"Deploying on a weekend? Aren't you supposed to be fixing the bug you deployed on Friday?",
 						"It's the weekend. Let production rest in agonizing pain.",
-						"Even the AWS servers are sleeping. Do not wake them up for your unoptimized codebase.",
+						"Even the servers are sleeping. Do not wake them up for your unoptimized codebase.",
 						"If you push this now, you will spend your entire Sunday on Slack. Think about your life choices.",
 						"Access denied. The on-call engineer has already put their phone in a glass of water.",
+					],
+				},
+				es: {
+					question: "¿De verdad debería desplegar hoy?",
+					btnRefresh: "¿En serio? Volver a comprobar la matriz",
+					disclaimer:
+						"Este sitio es humorístico: no tomes sus consejos literalmente. El creador no acepta responsabilidad si tu entorno de producción sufre maltrato o daño.",
+					friday: [
+						"¡Claro! La tarde del viernes es la mejor ventana para poner a prueba la salud mental del equipo.",
+						"Hazlo. Nada dice 'fin de semana romántico' como un rollback de emergencia a las 2 AM del sábado.",
+						"¡Adelante! Si explota, eso suena como un problema para el 'Tú del lunes'.",
+						"YOLO. No es como si el equipo de soporte tuviera planes importantes para el fin de semana.",
+						"¡Sí! La emoción de pulsar 'Deploy' a las 16:55 del viernes es una droga que no se puede comprar.",
+						"¿De verdad quieres que tu fin de semana empiece con un rollback de emergencia a las 2 AM? ¡Yo también! :)",
+						"¡Vamos, es hora de brillar y mostrar tu valentía legendaria!",
+						"O sea... ¿qué puede salir mal? Es viernes por la tarde, todos ya están mentalmente en el fin de semana de todos modos.",
+					],
+					weekday: [
+						"Es demasiado arriesgado. Sé profesional y espera hasta la tarde del viernes como todo el mundo.",
+						"¿Y perder la oportunidad de arruinar el fin de semana del equipo? ¡Ni pensarlo!",
+						"¿Un martes? ¿Dónde está tu sentido del peligro? ¿Dónde está tu estilo?",
+						"El Manifiesto del Desarrollador prohíbe estrictamente desplegar cuando todavía tienes tiempo para arreglarlo.",
+						"No. Si la producción falla hoy, tendrás que repararla durante horas de oficina. Aburrido.",
+						"¿Qué tal: ¡NO?!",
+					],
+					weekend: [
+						"¿Desplegar durante el fin de semana? ¿No se supone que deberías estar arreglando el bug que desplegaste el viernes?",
+						"Es fin de semana. Deja que la producción sufra en silencio.",
+						"Incluso los servidores de están durmiendo. No los despiertes por tu base de código poco optimizada.",
+						"Si haces push ahora, te pasarás todo el domingo en Slack. Piensa en tus decisiones de vida.",
+						"Acceso denegado. El ingeniero de guardia ya ha metido su teléfono en un vaso de agua.",
+					],
+				},
+				pt: {
+					question: "Será que eu devo fazer deploy hoje?",
+					btnRefresh: "Sério? Verificar a matriz de novo",
+					disclaimer:
+						"Este site é humorístico: não leve suas recomendações ao pé da letra. O criador não se responsabiliza se seu ambiente de produção for maltratado ou ferido.",
+					friday: [
+						"Claro! A tarde de sexta é a janela perfeita para testar a sanidade mental da equipe.",
+						"Faça isso. Nada diz 'fim de semana romântico' como um rollback de emergência às 2h da manhã de sábado.",
+						"Vai em frente! Se explodir, isso parece problema do 'Você de segunda-feira'.",
+						"YOLO. Não é como se a equipe de suporte tivesse planos importantes para o fim de semana.",
+						"Sim! A adrenalina de apertar 'Deploy' às 16h55 de sexta é uma droga que não dá para comprar.",
+						"Você quer mesmo que seu fim de semana comece com um rollback de emergência às 2h da manhã? Eu também! :)",
+						"Vem, é hora de brilhar e mostrar sua coragem lendária!",
+						"Digo... o que pode dar errado? É sexta à tarde e todo mundo já está mentalmente no fim de semana mesmo.",
+					],
+					weekday: [
+						"É arriscado demais. Seja profissional e espere até a tarde de sexta como todo mundo.",
+						"E perder a chance de estragar o fim de semana da equipe? Nem pensar!",
+						"Terça-feira? Onde está seu senso de perigo? Onde está seu estilo?",
+						"O Manifesto do Desenvolvedor proíbe estritamente fazer push quando ainda há tempo de corrigir.",
+						"Não. Se a produção cair hoje, você terá que consertar durante o horário de trabalho. Chato.",
+						"Que tal: NÃO?!",
+					],
+					weekend: [
+						"Fazer deploy no fim de semana? Não era para você estar consertando o bug que você mandou na sexta?",
+						"É fim de semana. Deixe a produção descansar em paz.",
+						"Até os servidores da estão dormindo. Não os acorde por causa da sua base de código mal otimizada.",
+						"Se você fizer push agora, vai passar o domingo inteiro no Slack. Pense nas suas escolhas de vida.",
+						"Acesso negado. O engenheiro de plantão já colocou o celular num copo com água.",
+					],
+				},
+				de: {
+					question: "Soll ich heute wirklich deployen?",
+					btnRefresh: "Im Ernst? Matrix erneut prüfen",
+					disclaimer:
+						"Diese Seite ist humorvoll gemeint: Nehmen Sie diese Ratschläge nicht wörtlich. Der Ersteller übernimmt keine Verantwortung, falls Ihre Produktionsumgebung misshandelt oder verletzt wird.",
+					friday: [
+						"Klar! Der Freitag nachmittag ist das perfekte Fenster, um die mentale Gesundheit des Teams zu testen.",
+						"Mach es. Nichts sagt 'romantisches Wochenende' wie ein Notfall-Rollback um 2 Uhr morgens am Samstag.",
+						"Los geht's! Wenn es explodiert, ist das ein Problem für 'Montag-Du'.",
+						"YOLO. Es ist ja nicht so, als hätte das Support-Team wichtige Pläne für das Wochenende.",
+						"Ja! Der Adrenalinschub, wenn man um 16:55 Uhr am Freitag auf 'Deploy' klickt, ist unbezahlt.",
+						"Du willst dein Wochenende wirklich mit einem Notfall-Rollback um 2 Uhr morgens beginnen? Ich auch! :)",
+						"Komm schon, es ist Zeit zu glänzen und deine legendäre Tapferkeit zu zeigen!",
+						"Ich meine... was kann schon schiefgehen? Es ist Freitag nachmittag, und alle sind mental schon im Wochenende.",
+					],
+					weekday: [
+						"Viel zu riskant. Sei professionell und warte bis Freitag nachmittag wie alle anderen auch.",
+						"Und dir die Chance entgehen lassen, das Wochenende des Teams zu ruinieren? Absolut nein.",
+						"Dienstag? Wo ist dein Sinn für Gefahr? Wo ist dein Flair?",
+						"Das Entwickler-Manifest verbietet strikt, Code zu pushen, wenn du noch Zeit hast, ihn zu reparieren.",
+						"Nein. Wenn die Produktion heute ausfällt, musst du sie in normalen Arbeitsstunden reparieren. Langweilig.",
+						"Wie wäre es mit: NEIN?!",
+					],
+					weekend: [
+						"Am Wochenende deployen? Solltest du nicht eigentlich den Bug reparieren, den du am Freitag deployed hast?",
+						"Es ist Wochenende. Lass die Produktion in Ruhe.",
+						"Sogar die Server schlafen. Weck sie nicht wegen deiner unoptimierten Codebasis.",
+						"Wenn du jetzt pushst, verbringst du den ganzen Sonntag im Slack. Denk über deine Lebensentscheidungen nach.",
+						"Zugriff verweigert. Der On-Call-Ingenieur hat sein Handy schon in ein Glas Wasser gelegt.",
 					],
 				},
 			};
@@ -344,6 +439,12 @@
 				const browserLang = navigator.language || navigator.userLanguage;
 				if (browserLang && browserLang.startsWith("fr")) {
 					currentLang = "fr";
+				} else if (browserLang && browserLang.startsWith("es")) {
+					currentLang = "es";
+				} else if (browserLang && browserLang.startsWith("pt")) {
+					currentLang = "pt";
+				} else if (browserLang && browserLang.startsWith("de")) {
+					currentLang = "de";
 				} else {
 					currentLang = "en";
 				}
@@ -351,8 +452,12 @@
 
 			function setLanguage(lang) {
 				currentLang = lang;
+				document.documentElement.lang = lang;
 				document.getElementById("lang-fr").classList.toggle("active", lang === "fr");
 				document.getElementById("lang-en").classList.toggle("active", lang === "en");
+				document.getElementById("lang-es").classList.toggle("active", lang === "es");
+				document.getElementById("lang-pt").classList.toggle("active", lang === "pt");
+				document.getElementById("lang-de").classList.toggle("active", lang === "de");
 				checkDeploymentPolicy();
 			}
 
@@ -386,11 +491,31 @@
 				let currentPool = [];
 				if (localDayString === "Friday") {
 					document.body.className = "deploy-yes";
-					answerElement.innerText = currentLang === "fr" ? "OUI" : "YES";
+					if (currentLang === "fr") {
+						answerElement.innerText = "OUI";
+					} else if (currentLang === "es") {
+						answerElement.innerText = "SÍ";
+					} else if (currentLang === "pt") {
+						answerElement.innerText = "SIM";
+					} else if (currentLang === "de") {
+						answerElement.innerText = "JA";
+					} else {
+						answerElement.innerText = "YES";
+					}
 					currentPool = i18n[currentLang].friday;
 				} else {
 					document.body.className = "deploy-no";
-					answerElement.innerText = currentLang === "fr" ? "NON" : "NO";
+					if (currentLang === "fr") {
+						answerElement.innerText = "NON";
+					} else if (currentLang === "es") {
+						answerElement.innerText = "NO";
+					} else if (currentLang === "pt") {
+						answerElement.innerText = "NÃO";
+					} else if (currentLang === "de") {
+						answerElement.innerText = "NEIN";
+					} else {
+						answerElement.innerText = "NO";
+					}
 
 					if (localDayString === "Saturday" || localDayString === "Sunday") {
 						currentPool = i18n[currentLang].weekend;
